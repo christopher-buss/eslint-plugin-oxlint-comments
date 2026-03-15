@@ -14,12 +14,12 @@ require("../../scripts/update-docs-headers")
 require("../../scripts/update-docs-index")
 
 export default defineConfig({
-    title: "eslint-plugin-eslint-comments",
-    base: "/eslint-plugin-eslint-comments/",
-    description: "Additional ESLint rules for ESLint directive comments.",
+    title: "oxlint-plugin-oxlint-comments",
+    base: "/oxlint-plugin-oxlint-comments/",
+    description: "Rules for oxlint directive comments.",
     head: [["link", { rel: "icon", href: "/favicon.png" }]],
 
-    outDir: path.resolve(__dirname, "./dist/eslint-plugin-eslint-comments"),
+    outDir: path.resolve(__dirname, "./dist/oxlint-plugin-oxlint-comments"),
     vite: {
         publicDir: path.resolve(__dirname, "./public"),
         plugins: [eslint4b(), vitePluginGetLinter(), viteCommonjs()],
@@ -65,7 +65,7 @@ export default defineConfig({
                 text: `Rules in ${category}`,
                 collapsable: false,
                 items: rules.map((rule) => ({
-                    text: `eslint-comments/${rule.name}`,
+                    text: `oxlint-comments/${rule.name}`,
                     link: `/rules/${rule.name}`,
                 })),
             })),

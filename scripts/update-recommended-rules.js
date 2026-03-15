@@ -14,7 +14,7 @@ format(`/** DON'T EDIT THIS FILE; was created by scripts. */
 "use strict"
 
 module.exports = {
-    plugins: ["@eslint-community/eslint-comments"],
+    plugins: ["oxlint-comments"],
     rules: {
         ${rules
             .filter((rule) => rule.recommended)

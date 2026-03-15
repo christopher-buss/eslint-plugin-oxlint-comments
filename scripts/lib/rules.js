@@ -16,7 +16,7 @@ const rules = fs
     .map((name) => {
         const meta = require(`../../lib/rules/${name}`).meta
         return {
-            id: `@eslint-community/eslint-comments/${name}`,
+            id: `oxlint-comments/${name}`,
             name,
             category: String(meta.docs.category),
             description: String(meta.docs.description),

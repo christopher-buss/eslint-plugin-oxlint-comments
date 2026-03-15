@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/oxlint-plugin-oxlint-comments.svg)](https://npmx.dev/oxlint-plugin-oxlint-comments)
 
-ESLint rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
+Rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
 
 ## Usage
 
@@ -10,7 +10,7 @@ ESLint rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
 
 ## Semantic Versioning Policy
 
-`oxlint-plugin-oxlint-comments` follows [semantic versioning](http://semver.org/) and [ESLint's Semantic Versioning Policy](https://github.com/eslint/eslint#semantic-versioning-policy).
+`oxlint-plugin-oxlint-comments` follows [semantic versioning](http://semver.org/).
 
 ## Changelog
 
@@ -27,5 +27,5 @@ Please use GitHub's Issues/PRs.
 -   `npm test` runs tests and measures coverage.
 -   `npm run clean` removes the coverage of the last `npm test` command.
 -   `npm run coverage` shows the coverage of the last `npm test` command.
--   `npm run lint` runs ESLint for this codebase.
+-   `npm run lint` runs the linter for this codebase.
 -   `npm run watch` runs tests and measures coverage when source code are changed.
