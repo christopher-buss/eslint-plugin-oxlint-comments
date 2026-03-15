@@ -1,6 +1,6 @@
-# eslint-plugin-oxlint-comments
+# oxlint-plugin-oxlint-comments
 
-[![npm version](https://img.shields.io/npm/v/eslint-plugin-oxlint-comments.svg)](https://npmx.dev/eslint-plugin-oxlint-comments)
+[![npm version](https://img.shields.io/npm/v/oxlint-plugin-oxlint-comments.svg)](https://npmx.dev/oxlint-plugin-oxlint-comments)
 
 ESLint rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
 
@@ -10,7 +10,7 @@ ESLint rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
 
 ## Semantic Versioning Policy
 
-`eslint-plugin-oxlint-comments` follows [semantic versioning](http://semver.org/) and [ESLint's Semantic Versioning Policy](https://github.com/eslint/eslint#semantic-versioning-policy).
+`oxlint-plugin-oxlint-comments` follows [semantic versioning](http://semver.org/) and [ESLint's Semantic Versioning Policy](https://github.com/eslint/eslint#semantic-versioning-policy).
 
 ## Changelog
 

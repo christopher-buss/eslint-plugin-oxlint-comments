@@ -1,6 +1,6 @@
 # Getting Started
 
-ESLint rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
+Rules for oxlint directive comments (e.g. `//oxlint-disable-line`).
 
 ## Goal
 
@@ -17,47 +17,18 @@ For example,
 Use [npm](https://www.npmjs.com/) or a compatible tool.
 
 ```console
-npm install --save-dev eslint eslint-plugin-oxlint-comments
+npm install --save-dev oxlint oxlint-plugin-oxlint-comments
 ```
 
 ::: tip Requirements
 
 -   Node.js `>=22.0.0`
--   ESLint `^9.0.0 || ^10.0.0`
+-   Oxlint `>=0.16.7`
 
 :::
 
 ## Usage
 
-Configure your [`eslint.config.*` file](https://eslint.org/docs/latest/use/configure/configuration-files-new).
-
-For example:
-
 ```js
-import js from "@eslint/js"
-import comments from "eslint-plugin-oxlint-comments/configs"
-
-export default [js.configs.recommended, comments.recommended]
-```
-
-If your project's ESLint config runs in CommonJS instead of ESM, use `require()`:
-
-```js
-const comments = require("eslint-plugin-oxlint-comments/configs")
-```
-
-Either way, you can optionally configure individual rules:
-
-```js
-// ...
-export default [
-    // ...
-    comments.recommended,
-    {
-        rules: {
-            "oxlint-comments/no-unlimited-disable": "error",
-            // ...
-        },
-    },
-]
+import comments from "oxlint-plugin-oxlint-comments"
 ```

@@ -1,5 +1,5 @@
 {
-    "name": "eslint-plugin-oxlint-comments",
+    "name": "oxlint-plugin-oxlint-comments",
     "version": "0.1.0",
     "description": "Rules for oxlint directive comments.",
     "keywords": [
