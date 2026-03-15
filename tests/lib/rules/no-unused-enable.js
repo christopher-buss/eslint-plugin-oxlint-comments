@@ -1,16 +1,14 @@
-/**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * See LICENSE file in root directory for full license.
- */
-"use strict"
+import { describe, it } from "vitest"
+import { RuleTester } from "oxlint/plugins-dev"
+import rule from "../../../lib/rules/no-unused-enable.js"
 
-const { RuleTester } = require("eslint")
-const rule = require("../../../lib/rules/no-unused-enable")
+RuleTester.describe = describe
+RuleTester.it = it
+
 const tester = new RuleTester()
 
 tester.run("no-unused-enable", rule, {
     valid: [
-        // oxlint-disable/enable pairs (no ESLint errors to worry about)
         `
 /*oxlint-disable*/
 /*oxlint-enable*/
@@ -40,9 +38,9 @@ tester.run("no-unused-enable", rule, {
                     message:
                         "Oxlint rules are re-enabled but those have not been disabled.",
                     line: 1,
-                    column: 1,
+                    column: 0,
                     endLine: 1,
-                    endColumn: 18,
+                    endColumn: 17,
                 },
             ],
         },
@@ -53,9 +51,9 @@ tester.run("no-unused-enable", rule, {
                     message:
                         "'no-undef' rule is re-enabled but it has not been disabled.",
                     line: 1,
-                    column: 17,
+                    column: 16,
                     endLine: 1,
-                    endColumn: 25,
+                    endColumn: 24,
                 },
             ],
         },
@@ -69,9 +67,9 @@ tester.run("no-unused-enable", rule, {
                     message:
                         "'no-undef' rule is re-enabled but it has not been disabled.",
                     line: 3,
-                    column: 17,
+                    column: 16,
                     endLine: 3,
-                    endColumn: 25,
+                    endColumn: 24,
                 },
             ],
         },
@@ -83,9 +81,9 @@ tester.run("no-unused-enable", rule, {
                     message:
                         "Oxlint rules are re-enabled but those have not been disabled.",
                     line: 1,
-                    column: 1,
+                    column: 0,
                     endLine: 1,
-                    endColumn: 33,
+                    endColumn: 32,
                 },
             ],
         },

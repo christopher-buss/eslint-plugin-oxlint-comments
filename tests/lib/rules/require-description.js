@@ -1,18 +1,11 @@
-/**
- * @author Yosuke Ota <https://github.com/ota-meshi>
- * See LICENSE file in root directory for full license.
- */
-"use strict"
+import { describe, it } from "vitest"
+import { RuleTester } from "oxlint/plugins-dev"
+import rule from "../../../lib/rules/require-description.js"
 
-const semver = require("semver")
-const { Linter, RuleTester } = require("eslint")
-const rule = require("../../../lib/rules/require-description")
+RuleTester.describe = describe
+RuleTester.it = it
+
 const tester = new RuleTester()
-
-if (!semver.satisfies(Linter.version, ">=7.0.0")) {
-    // This rule can only be used with ESLint v7.x or later.
-    return
-}
 
 tester.run("require-description", rule, {
     valid: [

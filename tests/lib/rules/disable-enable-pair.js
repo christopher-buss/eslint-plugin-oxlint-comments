@@ -1,11 +1,10 @@
-/**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * See LICENSE file in root directory for full license.
- */
-"use strict"
+import { describe, it } from "vitest"
+import { RuleTester } from "oxlint/plugins-dev"
+import rule from "../../../lib/rules/disable-enable-pair.js"
 
-const { RuleTester } = require("eslint")
-const rule = require("../../../lib/rules/disable-enable-pair")
+RuleTester.describe = describe
+RuleTester.it = it
+
 const tester = new RuleTester()
 
 tester.run("disable-enable-pair", rule, {
@@ -96,9 +95,9 @@ var foo = 1
                 {
                     message: "Requires 'oxlint-enable' directive.",
                     line: 2,
-                    column: 1,
+                    column: 0,
                     endLine: 2,
-                    endColumn: 19,
+                    endColumn: 18,
                 },
             ],
         },
@@ -111,9 +110,9 @@ var foo = 1
                     message:
                         "Requires 'oxlint-enable' directive for 'no-undef'.",
                     line: 2,
-                    column: 18,
+                    column: 17,
                     endLine: 2,
-                    endColumn: 26,
+                    endColumn: 25,
                 },
             ],
         },
@@ -127,9 +126,9 @@ var foo = 1
                     message:
                         "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 2,
-                    column: 27,
+                    column: 26,
                     endLine: 2,
-                    endColumn: 41,
+                    endColumn: 40,
                 },
             ],
         },
@@ -144,9 +143,9 @@ var foo = 1
                     message:
                         "Requires 'oxlint-enable' directive for 'no-undef'.",
                     line: 2,
-                    column: 18,
+                    column: 17,
                     endLine: 2,
-                    endColumn: 26,
+                    endColumn: 25,
                 },
             ],
         },
@@ -162,9 +161,9 @@ console.log();
                     message:
                         "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 4,
-                    column: 18,
+                    column: 17,
                     endLine: 4,
-                    endColumn: 32,
+                    endColumn: 31,
                 },
             ],
         },
@@ -179,9 +178,9 @@ console.log();
                     message:
                         "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 3,
-                    column: 18,
+                    column: 17,
                     endLine: 3,
-                    endColumn: 32,
+                    endColumn: 31,
                 },
             ],
         },
@@ -197,9 +196,9 @@ console.log();
                     message:
                         "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 3,
-                    column: 18,
+                    column: 17,
                     endLine: 3,
-                    endColumn: 32,
+                    endColumn: 31,
                 },
             ],
         },
@@ -216,9 +215,9 @@ console.log();
                     message:
                         "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 3,
-                    column: 18,
+                    column: 17,
                     endLine: 3,
-                    endColumn: 32,
+                    endColumn: 31,
                 },
             ],
         },

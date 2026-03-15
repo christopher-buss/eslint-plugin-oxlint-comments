@@ -1,9 +1,12 @@
-"use strict"
+import { createRequire } from "node:module"
+import rules from "./lib/rules.js"
 
-const rules = require("./lib/rules")
-const configs = require("./lib/configs")
+const require = createRequire(import.meta.url)
+const { name, version } = require("./package.json")
 
-module.exports = {
-    configs,
+const plugin = {
+    meta: { name, version },
     rules,
 }
+
+export default plugin

@@ -1,40 +1,11 @@
-/**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * See LICENSE file in root directory for full license.
- */
-"use strict"
+import { describe, it } from "vitest"
+import { RuleTester } from "oxlint/plugins-dev"
+import rule from "../../../lib/rules/no-restricted-disable.js"
 
-const { Linter, RuleTester } = require("eslint")
+RuleTester.describe = describe
+RuleTester.it = it
 
-const rule = require("../../../lib/rules/no-restricted-disable")
-
-let coreRules
-try {
-    coreRules = require("eslint/use-at-your-own-risk").builtinRules
-} catch {
-    coreRules = new Linter({ configType: "eslintrc" }).getRules()
-}
-
-let tester = null
-
-if (typeof RuleTester.prototype.defineRule === "function") {
-    // ESLint < 9
-    tester = new RuleTester()
-    tester.defineRule("foo/no-undef", coreRules.get("no-undef"))
-    tester.defineRule("foo/no-redeclare", coreRules.get("no-redeclare"))
-} else {
-    // ESLint 9
-    tester = new RuleTester({
-        plugins: {
-            foo: {
-                rules: {
-                    "no-undef": coreRules.get("no-undef"),
-                    "no-redeclare": coreRules.get("no-redeclare"),
-                },
-            },
-        },
-    })
-}
+const tester = new RuleTester()
 
 tester.run("no-restricted-disable", rule, {
     valid: [

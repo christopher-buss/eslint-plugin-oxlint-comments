@@ -1,11 +1,10 @@
-/**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * See LICENSE file in root directory for full license.
- */
-"use strict"
+import { describe, it } from "vitest"
+import { RuleTester } from "oxlint/plugins-dev"
+import rule from "../../../lib/rules/no-unlimited-disable.js"
 
-const { RuleTester } = require("eslint")
-const rule = require("../../../lib/rules/no-unlimited-disable")
+RuleTester.describe = describe
+RuleTester.it = it
+
 const tester = new RuleTester()
 
 tester.run("no-unlimited-disable", rule, {

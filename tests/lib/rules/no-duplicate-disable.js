@@ -1,11 +1,10 @@
-/**
- * @author Toru Nagashima <https://github.com/mysticatea>
- * See LICENSE file in root directory for full license.
- */
-"use strict"
+import { describe, it } from "vitest"
+import { RuleTester } from "oxlint/plugins-dev"
+import rule from "../../../lib/rules/no-duplicate-disable.js"
 
-const { RuleTester } = require("eslint")
-const rule = require("../../../lib/rules/no-duplicate-disable")
+RuleTester.describe = describe
+RuleTester.it = it
+
 const tester = new RuleTester()
 
 tester.run("no-duplicate-disable", rule, {
@@ -39,9 +38,9 @@ tester.run("no-duplicate-disable", rule, {
                 {
                     message: "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 23,
+                    column: 22,
                     endLine: 3,
-                    endColumn: 31,
+                    endColumn: 30,
                 },
             ],
         },
@@ -54,9 +53,9 @@ tester.run("no-duplicate-disable", rule, {
                 {
                     message: "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 23,
+                    column: 22,
                     endLine: 3,
-                    endColumn: 31,
+                    endColumn: 30,
                 },
             ],
         },
@@ -69,9 +68,9 @@ tester.run("no-duplicate-disable", rule, {
                 {
                     message: "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 28,
+                    column: 27,
                     endLine: 3,
-                    endColumn: 36,
+                    endColumn: 35,
                 },
             ],
         },
@@ -84,9 +83,9 @@ tester.run("no-duplicate-disable", rule, {
                 {
                     message: "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 28,
+                    column: 27,
                     endLine: 3,
-                    endColumn: 36,
+                    endColumn: 35,
                 },
             ],
         },
@@ -99,9 +98,9 @@ tester.run("no-duplicate-disable", rule, {
                 {
                     message: "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 23,
+                    column: 22,
                     endLine: 3,
-                    endColumn: 31,
+                    endColumn: 30,
                 },
             ],
         },
@@ -114,9 +113,9 @@ tester.run("no-duplicate-disable", rule, {
                 {
                     message: "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 23,
+                    column: 22,
                     endLine: 3,
-                    endColumn: 31,
+                    endColumn: 30,
                 },
             ],
         },
@@ -131,9 +130,9 @@ tester.run("no-duplicate-disable", rule, {
                     message:
                         "'no-undef' rule has been disabled already.",
                     line: 3,
-                    column: 24,
+                    column: 23,
                     endLine: 3,
-                    endColumn: 32,
+                    endColumn: 31,
                 },
             ],
         },
