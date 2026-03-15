@@ -10,9 +10,9 @@ const plugin = {
 }
 
 const recommended = {
-    name: "@eslint-community/eslint-comments/recommended",
+    name: "oxlint-comments/recommended",
     plugins: {
-        "@eslint-community/eslint-comments": plugin,
+        "oxlint-comments": plugin,
     },
     rules: rulesRecommended,
 }

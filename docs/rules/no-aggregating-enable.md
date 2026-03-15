@@ -1,22 +1,22 @@
-# @eslint-community/eslint-comments/no-aggregating-enable
+# oxlint-comments/no-aggregating-enable
 
-> disallow a `eslint-enable` comment for multiple `eslint-disable` comments
+> disallow a `oxlint-enable` comment for multiple `oxlint-disable` comments
 
--   🌟 The `"extends": "plugin:@eslint-community/eslint-comments/recommended"` property in a configuration file enables this rule.
+-   🌟 The `oxlint-comments/recommended` config enables this rule.
 
-`eslint-enable` directive-comments can enable rules which are disabled by different `eslint-disable` directive-comments.
+`oxlint-enable` directive-comments can enable rules which are disabled by different `oxlint-disable` directive-comments.
 It can enable a rule unintentionally.
 
 ```js
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 f()
-/*eslint-disable no-var */
+/*oxlint-disable no-var */
 var a
-    /*eslint-enable */
-;("※ Enables both no-undef and no-var.")
+    /*oxlint-enable */
+;("Enables both no-undef and no-var.")
 ```
 
-This rule warns `eslint-enable` directive-comments which enable rules for multiple `eslint-disable` directive-comments.
+This rule warns `oxlint-enable` directive-comments which enable rules for multiple `oxlint-disable` directive-comments.
 
 ## Rule Details
 
@@ -25,13 +25,13 @@ This rule warns `eslint-enable` directive-comments which enable rules for multip
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-aggregating-enable: error*/
+/*eslint oxlint-comments/no-aggregating-enable: error*/
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 f()
-/*eslint-disable no-var */
+/*oxlint-disable no-var */
 var a
-/*eslint-enable */
+/*oxlint-enable */
 ```
 
 </eslint-playground>
@@ -39,13 +39,13 @@ var a
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-aggregating-enable: error*/
+/*eslint oxlint-comments/no-aggregating-enable: error*/
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 f()
-/*eslint-disable no-var */
+/*oxlint-disable no-var */
 var a
-/*eslint-enable no-undef, no-var */
+/*oxlint-enable no-undef, no-var */
 ```
 
 </eslint-playground>
@@ -55,15 +55,15 @@ var a
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-aggregating-enable: error*/
+/*eslint oxlint-comments/no-aggregating-enable: error*/
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 f()
-/*eslint-disable no-var */
+/*oxlint-disable no-var */
 var a
-/*eslint-enable no-var */
+/*oxlint-enable no-var */
 
-/*eslint-enable no-undef */
+/*oxlint-enable no-undef */
 ```
 
 </eslint-playground>

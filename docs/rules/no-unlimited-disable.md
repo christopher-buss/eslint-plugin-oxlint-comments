@@ -1,10 +1,10 @@
-# @eslint-community/eslint-comments/no-unlimited-disable
+# oxlint-comments/no-unlimited-disable
 
-> disallow `eslint-disable` comments without rule names
+> disallow `oxlint-disable` comments without rule names
 
--   🌟 The `"extends": "plugin:@eslint-community/eslint-comments/recommended"` property in a configuration file enables this rule.
+-   🌟 The `oxlint-comments/recommended` config enables this rule.
 
-`eslint-disable` directive-comments disable all rules by default. This may cause to overlook some ESLint warnings unintentionally.
+`oxlint-disable` directive-comments disable all rules by default. This may cause to overlook some warnings unintentionally.
 So you should specify the rules to disable accurately.
 
 ## Rule Details
@@ -14,9 +14,9 @@ Examples of :-1: **incorrect** code for this rule:
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-unlimited-disable: error */
+/*eslint oxlint-comments/no-unlimited-disable: error */
 
-var foo //eslint-disable-line
+var foo //oxlint-disable-line
 ```
 
 </eslint-playground>
@@ -26,9 +26,9 @@ Examples of :+1: **correct** code for this rule:
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-unlimited-disable: error */
+/*eslint oxlint-comments/no-unlimited-disable: error */
 
-var foo //eslint-disable-line no-unused-vars
+var foo //oxlint-disable-line no-unused-vars
 ```
 
 </eslint-playground>

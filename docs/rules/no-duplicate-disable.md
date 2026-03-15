@@ -1,13 +1,13 @@
-# @eslint-community/eslint-comments/no-duplicate-disable
+# oxlint-comments/no-duplicate-disable
 
-> disallow duplicate `eslint-disable` comments
+> disallow duplicate `oxlint-disable` comments
 
--   🌟 The `"extends": "plugin:@eslint-community/eslint-comments/recommended"` property in a configuration file enables this rule.
+-   🌟 The `oxlint-comments/recommended` config enables this rule.
 
-Duplicate of `eslint-disable` directive-comments implies that there is a mix of wide-range directive-comments and narrow-range directive-comments.
-The mix may cause to overlook ESLint warnings in future.
+Duplicate `oxlint-disable` directive-comments implies that there is a mix of wide-range directive-comments and narrow-range directive-comments.
+The mix may cause to overlook warnings in future.
 
-This rule warns duplicate `eslint-disable` directive-comments.
+This rule warns duplicate `oxlint-disable` directive-comments.
 
 ## Rule Details
 
@@ -16,11 +16,11 @@ Examples of :-1: **incorrect** code for this rule:
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-duplicate-disable: error */
+/*eslint oxlint-comments/no-duplicate-disable: error */
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 
-var foo = bar() //eslint-disable-line no-undef
+var foo = bar() //oxlint-disable-line no-undef
 ```
 
 </eslint-playground>
@@ -30,9 +30,9 @@ Examples of :+1: **correct** code for this rule:
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-duplicate-disable: error */
+/*eslint oxlint-comments/no-duplicate-disable: error */
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 
 var foo = bar()
 ```
@@ -42,9 +42,9 @@ var foo = bar()
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-duplicate-disable: error */
+/*eslint oxlint-comments/no-duplicate-disable: error */
 
-var foo = bar() //eslint-disable-line no-undef
+var foo = bar() //oxlint-disable-line no-undef
 ```
 
 </eslint-playground>

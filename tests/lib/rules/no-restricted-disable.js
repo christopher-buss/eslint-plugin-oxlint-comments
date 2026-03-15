@@ -4,8 +4,8 @@
  */
 "use strict"
 
-const semver = require("semver")
 const { Linter, RuleTester } = require("eslint")
+
 const rule = require("../../../lib/rules/no-restricted-disable")
 
 let coreRules
@@ -38,142 +38,129 @@ if (typeof RuleTester.prototype.defineRule === "function") {
 
 tester.run("no-restricted-disable", rule, {
     valid: [
-        "/*eslint-disable*/",
-        "//eslint-disable-line",
-        "//eslint-disable-next-line",
-        "/*eslint-disable-line*/",
-        "/*eslint-disable-next-line*/",
+        "/*oxlint-disable*/",
+        "//oxlint-disable-line",
+        "//oxlint-disable-next-line",
+        "/*oxlint-disable-line*/",
+        "/*oxlint-disable-next-line*/",
         {
-            code: "/*eslint-disable eqeqeq*/",
+            code: "/*oxlint-disable eqeqeq*/",
             options: ["no-unused-vars"],
         },
         {
-            code: "/*eslint-enable eqeqeq*/",
+            code: "/*oxlint-enable eqeqeq*/",
             options: ["eqeqeq"],
         },
         {
-            code: "/*eslint-disable eqeqeq*/",
+            code: "/*oxlint-disable eqeqeq*/",
             options: ["*", "!eqeqeq"],
         },
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/*eslint-disable eqeqeq*/ a {}",
-                      options: ["*", "!eqeqeq"],
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                  },
-              ]
-            : []),
     ],
     invalid: [
         {
-            code: "/*eslint-disable eqeqeq*/",
+            code: "/*oxlint-disable eqeqeq*/",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable*/",
+            code: "/*oxlint-disable*/",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "//eslint-disable-line eqeqeq",
+            code: "//oxlint-disable-line eqeqeq",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable-line eqeqeq*/",
+            code: "/*oxlint-disable-line eqeqeq*/",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "//eslint-disable-line",
+            code: "//oxlint-disable-line",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable-line*/",
+            code: "/*oxlint-disable-line*/",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "//eslint-disable-next-line eqeqeq",
+            code: "//oxlint-disable-next-line eqeqeq",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable-next-line eqeqeq*/",
+            code: "/*oxlint-disable-next-line eqeqeq*/",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "//eslint-disable-next-line",
+            code: "//oxlint-disable-next-line",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable-next-line*/",
+            code: "/*oxlint-disable-next-line*/",
             options: ["eqeqeq"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
 
         {
-            code: "/*eslint-disable eqeqeq, no-undef, no-redeclare*/",
+            code: "/*oxlint-disable eqeqeq, no-undef, no-redeclare*/",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable*/",
+            code: "/*oxlint-disable*/",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling '*,!no-undef,!no-redeclare' is not allowed."],
         },
         {
-            code: "//eslint-disable-line eqeqeq, no-undef, no-redeclare",
+            code: "//oxlint-disable-line eqeqeq, no-undef, no-redeclare",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable-line eqeqeq, no-undef, no-redeclare*/",
+            code: "/*oxlint-disable-line eqeqeq, no-undef, no-redeclare*/",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "//eslint-disable-line",
+            code: "//oxlint-disable-line",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling '*,!no-undef,!no-redeclare' is not allowed."],
         },
         {
-            code: "/*eslint-disable-line*/",
+            code: "/*oxlint-disable-line*/",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling '*,!no-undef,!no-redeclare' is not allowed."],
         },
         {
-            code: "//eslint-disable-next-line eqeqeq, no-undef, no-redeclare",
+            code: "//oxlint-disable-next-line eqeqeq, no-undef, no-redeclare",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "/*eslint-disable-next-line eqeqeq, no-undef, no-redeclare*/",
+            code: "/*oxlint-disable-next-line eqeqeq, no-undef, no-redeclare*/",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling 'eqeqeq' is not allowed."],
         },
         {
-            code: "//eslint-disable-next-line",
+            code: "//oxlint-disable-next-line",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling '*,!no-undef,!no-redeclare' is not allowed."],
         },
         {
-            code: "/*eslint-disable-next-line*/",
+            code: "/*oxlint-disable-next-line*/",
             options: ["*", "!no-undef", "!no-redeclare"],
             errors: ["Disabling '*,!no-undef,!no-redeclare' is not allowed."],
         },
 
         {
-            code: "/*eslint-disable semi, no-extra-semi, semi-style, comma-style*/",
+            code: "/*oxlint-disable semi, no-extra-semi, semi-style, comma-style*/",
             options: ["*semi*"],
             errors: [
                 "Disabling 'semi' is not allowed.",
@@ -182,7 +169,7 @@ tester.run("no-restricted-disable", rule, {
             ],
         },
         {
-            code: "/*eslint-disable no-undef, no-redeclare, foo/no-undef, foo/no-redeclare*/",
+            code: "/*oxlint-disable no-undef, no-redeclare, foo/no-undef, foo/no-redeclare*/",
             options: ["foo/*"],
             errors: [
                 "Disabling 'foo/no-undef' is not allowed.",
@@ -190,28 +177,10 @@ tester.run("no-restricted-disable", rule, {
             ],
         },
         // -- description
-        ...(semver.satisfies(Linter.version, ">=7.0.0")
-            ? [
-                  {
-                      code: "/*eslint-disable -- description*/",
-                      options: ["eqeqeq"],
-                      errors: ["Disabling 'eqeqeq' is not allowed."],
-                  },
-              ]
-            : []),
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/*eslint-disable eqeqeq*/ a {}",
-                      options: ["eqeqeq"],
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                      errors: ["Disabling 'eqeqeq' is not allowed."],
-                  },
-              ]
-            : []),
+        {
+            code: "/*oxlint-disable -- description*/",
+            options: ["eqeqeq"],
+            errors: ["Disabling 'eqeqeq' is not allowed."],
+        },
     ],
 })

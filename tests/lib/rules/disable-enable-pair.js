@@ -4,41 +4,39 @@
  */
 "use strict"
 
-const semver = require("semver")
-const { Linter, RuleTester } = require("eslint")
+const { RuleTester } = require("eslint")
 const rule = require("../../../lib/rules/disable-enable-pair")
 const tester = new RuleTester()
 
 tester.run("disable-enable-pair", rule, {
     valid: [
         `
-/*eslint-disable*/
-/*eslint-enable*/
+/*oxlint-disable*/
+/*oxlint-enable*/
 `,
         `
-/*eslint-disable no-undef,no-unused-vars*/
-/*eslint-enable no-undef,no-unused-vars*/
+/*oxlint-disable no-undef,no-unused-vars*/
+/*oxlint-enable no-undef,no-unused-vars*/
 `,
         `
-/*eslint-disable no-undef,no-unused-vars*/
-/*eslint-enable*/
+/*oxlint-disable no-undef,no-unused-vars*/
+/*oxlint-enable*/
 `,
-        "//eslint-disable-line",
-        "//eslint-disable-next-line",
-        "/*eslint-disable-line*/",
-        "/*eslint-disable-next-line*/",
-        "/*eslint no-undef: off */",
+        "//oxlint-disable-line",
+        "//oxlint-disable-next-line",
+        "/*oxlint-disable-line*/",
+        "/*oxlint-disable-next-line*/",
         `
 function foo() {
-    /*eslint-disable*/
-    /*eslint-enable*/
+    /*oxlint-disable*/
+    /*oxlint-enable*/
 }
 `,
         `
-/*eslint-disable no-undef*/
-/*eslint-disable no-unused-vars*/
-/*eslint-enable*/
-/*eslint-enable*/
+/*oxlint-disable no-undef*/
+/*oxlint-disable no-unused-vars*/
+/*oxlint-enable*/
+/*oxlint-enable*/
 `,
         {
             code: `
@@ -48,15 +46,15 @@ console.log('This code does not even have any special comments')
         },
         {
             code: `
-/*eslint-disable*/
+/*oxlint-disable*/
 `,
             options: [{ allowWholeFile: true }],
         },
         {
             code: `
-/*eslint-disable no-undef*/
-/*eslint-disable no-unused-vars*/
-/*eslint-enable*/
+/*oxlint-disable no-undef*/
+/*oxlint-disable no-unused-vars*/
+/*oxlint-enable*/
 `,
             options: [{ allowWholeFile: true }],
         },
@@ -65,60 +63,40 @@ console.log('This code does not even have any special comments')
 
 /**
  * @file This test case makes sure comments and blank lines
- * before "whole-file" eslint-disable are allowed.
+ * before "whole-file" oxlint-disable are allowed.
  */
 
-/*eslint-disable*/
+/*oxlint-disable*/
 `,
             options: [{ allowWholeFile: true }],
         },
         {
             code: `
-/*eslint-disable no-unused-vars, no-undef */
+/*oxlint-disable no-unused-vars, no-undef */
 var foo = 1
 `,
             options: [{ allowWholeFile: true }],
         },
         // -- description
-        ...(semver.satisfies(Linter.version, ">=7.0.0")
-            ? [
-                  `
-/*eslint-disable no-undef -- description*/
-/*eslint-enable no-undef*/
+        `
+/*oxlint-disable no-undef -- description*/
+/*oxlint-enable no-undef*/
 `,
-                  `
-/*eslint-disable no-undef,no-unused-vars -- description*/
-/*eslint-enable no-undef,no-unused-vars*/
+        `
+/*oxlint-disable no-undef,no-unused-vars -- description*/
+/*oxlint-enable no-undef,no-unused-vars*/
 `,
-              ]
-            : []),
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: `
-/*eslint-disable no-undef*/
-/*eslint-enable no-undef*/
-a {}
-`,
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                  },
-              ]
-            : []),
     ],
     invalid: [
         {
             code: `
-/*eslint-disable*/
+/*oxlint-disable*/
 `,
             errors: [
                 {
-                    message: "Requires 'eslint-enable' directive.",
+                    message: "Requires 'oxlint-enable' directive.",
                     line: 2,
-                    column: 0,
+                    column: 1,
                     endLine: 2,
                     endColumn: 19,
                 },
@@ -126,12 +104,12 @@ a {}
         },
         {
             code: `
-/*eslint-disable no-undef*/
+/*oxlint-disable no-undef*/
 `,
             errors: [
                 {
                     message:
-                        "Requires 'eslint-enable' directive for 'no-undef'.",
+                        "Requires 'oxlint-enable' directive for 'no-undef'.",
                     line: 2,
                     column: 18,
                     endLine: 2,
@@ -141,13 +119,13 @@ a {}
         },
         {
             code: `
-/*eslint-disable no-undef,no-unused-vars*/
-/*eslint-enable no-undef*/
+/*oxlint-disable no-undef,no-unused-vars*/
+/*oxlint-enable no-undef*/
 `,
             errors: [
                 {
                     message:
-                        "Requires 'eslint-enable' directive for 'no-unused-vars'.",
+                        "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 2,
                     column: 27,
                     endLine: 2,
@@ -157,14 +135,14 @@ a {}
         },
         {
             code: `
-/*eslint-disable no-undef*/
-/*eslint-disable no-unused-vars*/
-/*eslint-enable no-unused-vars*/
+/*oxlint-disable no-undef*/
+/*oxlint-disable no-unused-vars*/
+/*oxlint-enable no-unused-vars*/
 `,
             errors: [
                 {
                     message:
-                        "Requires 'eslint-enable' directive for 'no-undef'.",
+                        "Requires 'oxlint-enable' directive for 'no-undef'.",
                     line: 2,
                     column: 18,
                     endLine: 2,
@@ -174,15 +152,15 @@ a {}
         },
         {
             code: `
-/*eslint-disable no-undef*/
+/*oxlint-disable no-undef*/
 console.log();
-/*eslint-disable no-unused-vars*/
+/*oxlint-disable no-unused-vars*/
 `,
             options: [{ allowWholeFile: true }],
             errors: [
                 {
                     message:
-                        "Requires 'eslint-enable' directive for 'no-unused-vars'.",
+                        "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 4,
                     column: 18,
                     endLine: 4,
@@ -193,13 +171,13 @@ console.log();
         {
             code: `
 console.log();
-/*eslint-disable no-unused-vars*/
+/*oxlint-disable no-unused-vars*/
 `,
             options: [{ allowWholeFile: true }],
             errors: [
                 {
                     message:
-                        "Requires 'eslint-enable' directive for 'no-unused-vars'.",
+                        "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 3,
                     column: 18,
                     endLine: 3,
@@ -210,14 +188,14 @@ console.log();
         {
             code: `
 {
-/*eslint-disable no-unused-vars*/
+/*oxlint-disable no-unused-vars*/
 }
 `,
             options: [{ allowWholeFile: true }],
             errors: [
                 {
                     message:
-                        "Requires 'eslint-enable' directive for 'no-unused-vars'.",
+                        "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
                     line: 3,
                     column: 18,
                     endLine: 3,
@@ -226,49 +204,23 @@ console.log();
             ],
         },
         // -- description
-        ...(semver.satisfies(Linter.version, ">=7.0.0")
-            ? [
-                  {
-                      code: `
+        {
+            code: `
 {
-/*eslint-disable no-unused-vars -- description */
+/*oxlint-disable no-unused-vars -- description */
 }
 `,
-                      options: [{ allowWholeFile: true }],
-                      errors: [
-                          {
-                              message:
-                                  "Requires 'eslint-enable' directive for 'no-unused-vars'.",
-                              line: 3,
-                              column: 18,
-                              endLine: 3,
-                              endColumn: 32,
-                          },
-                      ],
-                  },
-              ]
-            : []),
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/* eslint-disable no-unused-vars */ a {}",
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                      errors: [
-                          {
-                              message:
-                                  "Requires 'eslint-enable' directive for 'no-unused-vars'.",
-                              line: 1,
-                              column: 19,
-                              endLine: 1,
-                              endColumn: 33,
-                          },
-                      ],
-                  },
-              ]
-            : []),
+            options: [{ allowWholeFile: true }],
+            errors: [
+                {
+                    message:
+                        "Requires 'oxlint-enable' directive for 'no-unused-vars'.",
+                    line: 3,
+                    column: 18,
+                    endLine: 3,
+                    endColumn: 32,
+                },
+            ],
+        },
     ],
 })

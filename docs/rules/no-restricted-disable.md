@@ -1,8 +1,8 @@
-# @eslint-community/eslint-comments/no-restricted-disable
+# oxlint-comments/no-restricted-disable
 
-> disallow `eslint-disable` comments about specific rules
+> disallow `oxlint-disable` comments about specific rules
 
-This rule warns `eslint-disable` directive-comments if the comment disable specific rules.
+This rule warns `oxlint-disable` directive-comments if the comment disables specific rules.
 
 ## Rule Details
 
@@ -11,9 +11,9 @@ This rule warns `eslint-disable` directive-comments if the comment disable speci
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
+/*eslint oxlint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 f()
 ```
 
@@ -22,9 +22,9 @@ f()
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
+/*eslint oxlint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
 
-f() //eslint-disable-line no-undef
+f() //oxlint-disable-line no-undef
 ```
 
 </eslint-playground>
@@ -32,9 +32,9 @@ f() //eslint-disable-line no-undef
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
+/*eslint oxlint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
 
-f() //eslint-disable-line
+f() //oxlint-disable-line
 ```
 
 </eslint-playground>
@@ -44,9 +44,9 @@ f() //eslint-disable-line
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
+/*eslint oxlint-comments/no-restricted-disable: [error, no-undef, no-unused-vars]*/
 
-f() //eslint-disable-line another-rule
+f() //oxlint-disable-line another-rule
 ```
 
 </eslint-playground>
@@ -55,7 +55,7 @@ f() //eslint-disable-line another-rule
 
 ```json
 {
-    "no-restricted-disable": ["error", ...]
+    "oxlint-comments/no-restricted-disable": ["error", ...]
 }
 ```
 
@@ -63,21 +63,21 @@ This rule takes a list of strings, where each string is a glob pattern. For exam
 
 ```json
 {
-    "@eslint-community/eslint-comments/no-restricted-disable": [
+    "oxlint-comments/no-restricted-disable": [
         "error",
         "no-undef",
-        "*semi*", // rules which includes `semi`. E.g. `semi`, `semi-style`, `no-extra-semi`, ...
-        "react/*" // rules of `eslint-plugin-react`
+        "*semi*",
+        "react/*"
     ]
 }
 ```
 
 ```json
 {
-    "no-restricted-disable": [
+    "oxlint-comments/no-restricted-disable": [
         "error",
-        "*", // any rules
-        "!no-console" // but except `no-console`.
+        "*",
+        "!no-console"
     ]
 }
 ```

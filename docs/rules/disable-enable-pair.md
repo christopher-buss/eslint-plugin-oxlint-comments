@@ -1,13 +1,13 @@
-# @eslint-community/eslint-comments/disable-enable-pair
+# oxlint-comments/disable-enable-pair
 
-> require a `eslint-enable` comment for every `eslint-disable` comment
+> require a `oxlint-enable` comment for every `oxlint-disable` comment
 
--   🌟 The `"extends": "plugin:@eslint-community/eslint-comments/recommended"` property in a configuration file enables this rule.
+-   🌟 The `oxlint-comments/recommended` config enables this rule.
 
-`eslint-disable` directive-comments disable ESLint rules in all lines preceded by the comment.
-If you forget `eslint-enable` directive-comment, you may overlook ESLint warnings unintentionally.
+`oxlint-disable` directive-comments disable oxlint rules in all lines preceded by the comment.
+If you forget `oxlint-enable` directive-comment, you may overlook warnings unintentionally.
 
-This rule warns `eslint-disable` directive-comments if the `eslint-enable` directive-comment for that does not exist.
+This rule warns `oxlint-disable` directive-comments if the `oxlint-enable` directive-comment for that does not exist.
 
 ## Rule Details
 
@@ -16,9 +16,9 @@ Examples of :-1: **incorrect** code for this rule:
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/disable-enable-pair: error */
+/*eslint oxlint-comments/disable-enable-pair: error */
 
-/*eslint-disable no-undef, no-unused-vars */
+/*oxlint-disable no-undef, no-unused-vars */
 var foo = bar()
 ```
 
@@ -27,11 +27,11 @@ var foo = bar()
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/disable-enable-pair: error */
+/*eslint oxlint-comments/disable-enable-pair: error */
 
-/*eslint-disable no-undef, no-unused-vars */
+/*oxlint-disable no-undef, no-unused-vars */
 var foo = bar()
-/*eslint-enable no-unused-vars */
+/*oxlint-enable no-unused-vars */
 ```
 
 </eslint-playground>
@@ -41,11 +41,11 @@ Examples of :+1: **correct** code for this rule:
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/disable-enable-pair: error */
+/*eslint oxlint-comments/disable-enable-pair: error */
 
-/*eslint-disable no-undef, no-unused-vars */
+/*oxlint-disable no-undef, no-unused-vars */
 var foo = bar()
-/*eslint-enable no-undef, no-unused-vars */
+/*oxlint-enable no-undef, no-unused-vars */
 ```
 
 </eslint-playground>
@@ -53,22 +53,22 @@ var foo = bar()
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/disable-enable-pair: error */
+/*eslint oxlint-comments/disable-enable-pair: error */
 
-/*eslint-disable no-undef, no-unused-vars */
+/*oxlint-disable no-undef, no-unused-vars */
 var foo = bar()
-/*eslint-enable*/
+/*oxlint-enable*/
 ```
 
 </eslint-playground>
 
 ## Options
 
-The `allowWholeFile` option lets you allow disabling rules for the entire file while still catching "open" `eslint-disable` directives in the middle of a file.
+The `allowWholeFile` option lets you allow disabling rules for the entire file while still catching "open" `oxlint-disable` directives in the middle of a file.
 
 ```json
 {
-    "@eslint-community/eslint-comments/disable-enable-pair": [
+    "oxlint-comments/disable-enable-pair": [
         "error",
         { "allowWholeFile": true }
     ]
@@ -80,11 +80,11 @@ Examples of :-1: **incorrect** code for this rule:
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/disable-enable-pair: [error, {allowWholeFile: true}] */
+/*eslint oxlint-comments/disable-enable-pair: [error, {allowWholeFile: true}] */
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 var foo = bar()
-/*eslint-disable no-unused-vars */
+/*oxlint-disable no-unused-vars */
 var fizz = buzz()
 ```
 
@@ -95,13 +95,13 @@ Examples of :+1: **correct** code for this rule:
 <eslint-playground type="good" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/disable-enable-pair: [error, {allowWholeFile: true}] */
+/*eslint oxlint-comments/disable-enable-pair: [error, {allowWholeFile: true}] */
 
-/*eslint-disable no-undef */
+/*oxlint-disable no-undef */
 var foo = bar()
-/*eslint-disable no-unused-vars */
+/*oxlint-disable no-unused-vars */
 var fizz = buzz()
-/*eslint-enable no-unused-vars */
+/*oxlint-enable no-unused-vars */
 ```
 
 </eslint-playground>

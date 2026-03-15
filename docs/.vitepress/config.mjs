@@ -40,12 +40,12 @@ export default defineConfig({
         },
         editLink: {
             pattern:
-                "https://github.com/eslint-community/eslint-plugin-eslint-comments/edit/main/docs/:path",
+                "https://github.com/christopher-buss/eslint-plugin-oxlint-comments/edit/main/docs/:path",
         },
         socialLinks: [
             {
                 icon: "github",
-                link: "https://github.com/eslint-community/eslint-plugin-eslint-comments",
+                link: "https://github.com/christopher-buss/eslint-plugin-oxlint-comments",
             },
         ],
 

@@ -4,132 +4,100 @@
  */
 "use strict"
 
-const semver = require("semver")
-const { Linter, RuleTester } = require("eslint")
+const { RuleTester } = require("eslint")
 const rule = require("../../../lib/rules/no-unlimited-disable")
 const tester = new RuleTester()
 
 tester.run("no-unlimited-disable", rule, {
     valid: [
-        "/*eslint-enable*/",
-        "/*eslint-disable eqeqeq*/",
-        "//eslint-disable-line eqeqeq",
-        "//eslint-disable-next-line eqeqeq",
-        "/*eslint-disable-line eqeqeq*/",
-        "/*eslint-disable-next-line eqeqeq*/",
-        "var foo;\n//eslint-disable-line eqeqeq",
-        "var foo;\n/*eslint-disable-line eqeqeq*/",
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/*eslint-disable-line eqeqeq*/ a {}",
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                  },
-              ]
-            : []),
+        "/*oxlint-enable*/",
+        "/*oxlint-disable eqeqeq*/",
+        "//oxlint-disable-line eqeqeq",
+        "//oxlint-disable-next-line eqeqeq",
+        "/*oxlint-disable-line eqeqeq*/",
+        "/*oxlint-disable-next-line eqeqeq*/",
+        "var foo;\n//oxlint-disable-line eqeqeq",
+        "var foo;\n/*oxlint-disable-line eqeqeq*/",
     ],
     invalid: [
         {
-            code: "/*eslint-disable */",
+            code: "/*oxlint-disable */",
             errors: [
-                "Unexpected unlimited 'eslint-disable' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "/* eslint-disable */",
+            code: "/* oxlint-disable */",
             errors: [
-                "Unexpected unlimited 'eslint-disable' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "//eslint-disable-line",
+            code: "//oxlint-disable-line",
             errors: [
-                "Unexpected unlimited 'eslint-disable-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "/*eslint-disable-line*/",
+            code: "/*oxlint-disable-line*/",
             errors: [
-                "Unexpected unlimited 'eslint-disable-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "// eslint-disable-line ",
+            code: "// oxlint-disable-line ",
             errors: [
-                "Unexpected unlimited 'eslint-disable-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "/* eslint-disable-line */",
+            code: "/* oxlint-disable-line */",
             errors: [
-                "Unexpected unlimited 'eslint-disable-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "//eslint-disable-next-line",
+            code: "//oxlint-disable-next-line",
             errors: [
-                "Unexpected unlimited 'eslint-disable-next-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-next-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "/*eslint-disable-next-line*/",
+            code: "/*oxlint-disable-next-line*/",
             errors: [
-                "Unexpected unlimited 'eslint-disable-next-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-next-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "// eslint-disable-next-line ",
+            code: "// oxlint-disable-next-line ",
             errors: [
-                "Unexpected unlimited 'eslint-disable-next-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-next-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "/* eslint-disable-next-line */",
+            code: "/* oxlint-disable-next-line */",
             errors: [
-                "Unexpected unlimited 'eslint-disable-next-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-next-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "var foo;\n//eslint-disable-line",
+            code: "var foo;\n//oxlint-disable-line",
             errors: [
-                "Unexpected unlimited 'eslint-disable-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-line' comment. Specify some rule names to disable.",
             ],
         },
         {
-            code: "var foo;\n/*eslint-disable-line*/",
+            code: "var foo;\n/*oxlint-disable-line*/",
             errors: [
-                "Unexpected unlimited 'eslint-disable-line' comment. Specify some rule names to disable.",
+                "Unexpected unlimited 'oxlint-disable-line' comment. Specify some rule names to disable.",
             ],
         },
         // -- description
-        ...(semver.satisfies(Linter.version, ">=7.0.0")
-            ? [
-                  {
-                      code: "/*eslint-disable -- description */",
-                      errors: [
-                          "Unexpected unlimited 'eslint-disable' comment. Specify some rule names to disable.",
-                      ],
-                  },
-              ]
-            : []),
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/* eslint-disable */ a {}",
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                      errors: [
-                          "Unexpected unlimited 'eslint-disable' comment. Specify some rule names to disable.",
-                      ],
-                  },
-              ]
-            : []),
+        {
+            code: "/*oxlint-disable -- description */",
+            errors: [
+                "Unexpected unlimited 'oxlint-disable' comment. Specify some rule names to disable.",
+            ],
+        },
     ],
 })

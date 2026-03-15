@@ -1,6 +1,6 @@
-# @eslint-community/eslint-comments/no-use
+# oxlint-comments/no-use
 
-> disallow ESLint directive-comments
+> disallow oxlint directive-comments
 
 Abuse of directive-comments may cause to overlook bugs or upset of coding style.
 This rule disallows a use of directive-comments.
@@ -12,17 +12,12 @@ Examples of :-1: **incorrect** code for this rule:
 <eslint-playground type="bad" >
 
 ```js
-/*eslint @eslint-community/eslint-comments/no-use: error */
+/*eslint oxlint-comments/no-use: error */
 
-/* eslint no-undef: off */
-/* eslint-env browser */
-/* eslint-disable foo */
-/* eslint-enable bar */
-// eslint-disable-line
-// eslint-disable-next-line
-/* exported foo */
-/* global $ */
-/* globals a, b, c */
+/* oxlint-disable foo */
+/* oxlint-enable bar */
+// oxlint-disable-line
+// oxlint-disable-next-line
 ```
 
 </eslint-playground>
@@ -33,27 +28,22 @@ You can specify allowed directive-comments.
 
 ```json
 {
-    "@eslint-community/eslint-comments/no-use": ["error", { "allow": [] }]
+    "oxlint-comments/no-use": ["error", { "allow": [] }]
 }
 ```
 
 -   `allow` option is an array to allow specified directive-comments. The value of the array is some of the following strings:
-    -   `"eslint"`
-    -   `"eslint-disable"`
-    -   `"eslint-disable-line"`
-    -   `"eslint-disable-next-line"`
-    -   `"eslint-enable"`
-    -   `"eslint-env"`
-    -   `"exported"`
-    -   `"global"`
-    -   `"globals"`
+    -   `"oxlint-disable"`
+    -   `"oxlint-disable-line"`
+    -   `"oxlint-disable-next-line"`
+    -   `"oxlint-enable"`
 
 ## Known Limitations
 
 This rule cannot prevent the following case:
 
 ```js
-/* eslint @eslint-community/eslint-comments/no-use: off */
+/* eslint oxlint-comments/no-use: off */
 ```
 
 Because ESLint addresses the directive-comment before parsing.

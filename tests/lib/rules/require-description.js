@@ -16,239 +16,121 @@ if (!semver.satisfies(Linter.version, ">=7.0.0")) {
 
 tester.run("require-description", rule, {
     valid: [
-        '/* eslint eqeqeq: "off", curly: "error" -- Here\'s a description about why this configuration is necessary. */',
-        "/* eslint-disable -- description */",
-        "/* eslint-enable -- description */",
-        "/* exported -- description */",
-        "/* global -- description */",
-        "/* globals -- description */",
-        ...(semver.satisfies(Linter.version, "<=9.0.0")
-            ? // eslint-env rule was removed in ESLint v10
-              ["/* eslint-env -- description */"]
-            : []),
-        "/* just eslint in a normal comment */",
-        "// eslint-disable-line -- description",
-        "// eslint-disable-next-line -- description",
-        "/* eslint-disable-line -- description */",
-        "/* eslint-disable-next-line -- description */",
-        "// eslint-disable-line eqeqeq -- description",
-        "// eslint-disable-next-line eqeqeq -- description",
+        "/* oxlint-disable -- description */",
+        "/* oxlint-enable -- description */",
+        "/* just oxlint in a normal comment */",
+        "/* oxlint is great */",
+        "// oxlint",
+        "// oxlint-disable-line -- description",
+        "// oxlint-disable-next-line -- description",
+        "/* oxlint-disable-line -- description */",
+        "/* oxlint-disable-next-line -- description */",
+        "// oxlint-disable-line eqeqeq -- description",
+        "// oxlint-disable-next-line eqeqeq -- description",
         {
-            code: "/* eslint */",
-            options: [{ ignore: ["eslint"] }],
-        },
-        ...(semver.satisfies(Linter.version, "<=9.0.0")
-            ? // eslint-env rule was removed in ESLint v10
-              [
-                  {
-                      code: "/* eslint-env */",
-                      options: [{ ignore: ["eslint-env"] }],
-                  },
-              ]
-            : []),
-        {
-            code: "/* eslint-enable */",
-            options: [{ ignore: ["eslint-enable"] }],
+            code: "/* oxlint-enable */",
+            options: [{ ignore: ["oxlint-enable"] }],
         },
         {
-            code: "/* eslint-disable */",
-            options: [{ ignore: ["eslint-disable"] }],
+            code: "/* oxlint-disable */",
+            options: [{ ignore: ["oxlint-disable"] }],
         },
         {
-            code: "// eslint-disable-line",
-            options: [{ ignore: ["eslint-disable-line"] }],
+            code: "// oxlint-disable-line",
+            options: [{ ignore: ["oxlint-disable-line"] }],
         },
         {
-            code: "// eslint-disable-next-line",
-            options: [{ ignore: ["eslint-disable-next-line"] }],
+            code: "// oxlint-disable-next-line",
+            options: [{ ignore: ["oxlint-disable-next-line"] }],
         },
         {
-            code: "/* eslint-disable-line */",
-            options: [{ ignore: ["eslint-disable-line"] }],
+            code: "/* oxlint-disable-line */",
+            options: [{ ignore: ["oxlint-disable-line"] }],
         },
         {
-            code: "/* eslint-disable-next-line */",
-            options: [{ ignore: ["eslint-disable-next-line"] }],
+            code: "/* oxlint-disable-next-line */",
+            options: [{ ignore: ["oxlint-disable-next-line"] }],
         },
-        {
-            code: "/* exported */",
-            options: [{ ignore: ["exported"] }],
-        },
-        {
-            code: "/* global */",
-            options: [{ ignore: ["global"] }],
-        },
-        {
-            code: "/* globals */",
-            options: [{ ignore: ["globals"] }],
-        },
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/* eslint-disable */ a {}",
-                      options: [{ ignore: ["eslint-disable"] }],
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                  },
-              ]
-            : []),
     ],
     invalid: [
         {
-            code: "/* eslint */",
+            code: "/* oxlint-enable */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: '/* eslint eqeqeq: "off", curly: "error" */',
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        ...(semver.satisfies(Linter.version, "<=9.0.0")
-            ? // eslint-env rule was removed in ESLint v10
-              [
-                  {
-                      code: "/* eslint-env */",
-                      errors: [
-                          "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-                      ],
-                  },
-                  {
-                      code: "/* eslint-env node */",
-                      errors: [
-                          "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-                      ],
-                  },
-              ]
-            : []),
-        {
-            code: "/* eslint-enable */",
+            code: "/* oxlint-enable eqeqeq */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "/* eslint-enable eqeqeq */",
+            code: "/* oxlint-disable */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "/* eslint-disable */",
+            code: "/* oxlint-disable eqeqeq */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "/* eslint-disable eqeqeq */",
+            code: "// oxlint-disable-line",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "// eslint-disable-line",
+            code: "// oxlint-disable-line eqeqeq",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "// eslint-disable-line eqeqeq",
+            code: "// oxlint-disable-next-line",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "// eslint-disable-next-line",
+            code: "// oxlint-disable-next-line eqeqeq",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "// eslint-disable-next-line eqeqeq",
+            code: "/* oxlint-disable-line */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "/* eslint-disable-line */",
+            code: "/* oxlint-disable-line eqeqeq */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "/* eslint-disable-line eqeqeq */",
+            code: "/* oxlint-disable-next-line */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         {
-            code: "/* eslint-disable-next-line */",
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        {
-            code: "/* eslint-disable-next-line eqeqeq */",
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        {
-            code: "/* exported */",
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        {
-            code: "/* global */",
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        {
-            code: "/* global _ */",
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        {
-            code: "/* globals */",
-            errors: [
-                "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-            ],
-        },
-        {
-            code: "/* globals _ */",
+            code: "/* oxlint-disable-next-line eqeqeq */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
         // empty description
         {
-            code: "/* eslint-disable-next-line eqeqeq -- */",
+            code: "/* oxlint-disable-next-line eqeqeq -- */",
             errors: [
                 "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
             ],
         },
-        // Language plugin
-        ...(semver.satisfies(Linter.version, ">=9.6.0")
-            ? [
-                  {
-                      code: "/* eslint-disable */ a {}",
-                      plugins: {
-                          css: require("@eslint/css").default,
-                      },
-                      language: "css/css",
-                      errors: [
-                          "Unexpected undescribed directive comment. Include descriptions to explain why the comment is necessary.",
-                      ],
-                  },
-              ]
-            : []),
     ],
 })
